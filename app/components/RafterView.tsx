@@ -3,7 +3,7 @@ const RafterView = () => {
     <div className="rafter-view-container">
       <figure>
         <figcaption>
-          Choose the rafter&apos;s angle shown in the scope.
+          Choose the rafter&apos;s angles and dimensions shown in the scope.
         </figcaption>
         <div className="container">
           <div className="label r">r</div>

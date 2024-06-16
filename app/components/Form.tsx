@@ -63,8 +63,10 @@ const Form = () => {
                 <input
                   type="number"
                   id="rafterAngleTop"
-                  value={rafterAngleTop}
-                  onChange={(e) => setRafterAngleTop(e.target.valueAsNumber)}
+                  value={rafterAngleTop.toString()}
+                  onChange={(e) => {
+                    setRafterAngleTop(e.target.valueAsNumber);
+                  }}
                 />
               </td>
             </tr>
@@ -76,7 +78,7 @@ const Form = () => {
                 <input
                   type="number"
                   id="rafterAngleSide"
-                  value={rafterAngleSide}
+                  value={rafterAngleSide.toString()}
                   onChange={(e) => setRafterAngleSide(e.target.valueAsNumber)}
                 />
               </td>
@@ -89,7 +91,7 @@ const Form = () => {
                 <input
                   type="number"
                   id="rafterWidth"
-                  value={rafterWidth}
+                  value={rafterWidth.toString()}
                   onChange={(e) => setRafterWidth(e.target.valueAsNumber)}
                 />
               </td>
@@ -102,7 +104,7 @@ const Form = () => {
                 <input
                   type="number"
                   id="rafterHeight"
-                  value={rafterHeight}
+                  value={rafterHeight.toString()}
                   onChange={(e) => setRafterHeight(e.target.valueAsNumber)}
                 />
               </td>

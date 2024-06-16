@@ -2,7 +2,9 @@ const RafterView = () => {
   return (
     <div className="rafter-view-container">
       <figure>
-        <figcaption>Choose the rafter's angle shown in the scope.</figcaption>
+        <figcaption>
+          Choose the rafter&apos;s angle shown in the scope.
+        </figcaption>
         <div className="container">
           <div className="label r">r</div>
           <img src="/rafter_scope_side.png" alt="spectator view" />

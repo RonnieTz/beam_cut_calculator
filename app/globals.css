@@ -13,12 +13,12 @@ body {
   margin-top: 15px;
 }
 
-.rafter-side-view-container {
+.rafter-view-container {
   aspect-ratio: 1/1;
   width: 100%;
 }
 
-.rafter-side-view-container img {
+.rafter-view-container img {
   width: 100%;
   margin-top: 15px;
 }
@@ -31,4 +31,34 @@ figcaption {
   font-size: 1.3rem;
   text-align: center;
   font-weight: 600;
+}
+
+.container {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.r {
+  top: 46%;
+  left: 80%;
+}
+
+.t {
+  top: 55%;
+  left: 59%;
+}
+
+.w {
+  top: 48%;
+  left: 50%;
+}
+
+.h {
+  top: 45%;
+  left: 54%;
 }

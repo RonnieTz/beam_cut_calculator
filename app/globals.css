@@ -133,3 +133,7 @@ p {
   font-family: 'Poppins', sans-serif;
   font-style: italic;
 }
+
+table {
+  margin-left: auto;
+}

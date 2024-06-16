@@ -1,5 +1,6 @@
 'use client';
-import { useState, MouseEvent } from 'react';
+import { useState } from 'react';
+import { triangle } from '../utils/trigonometry';
 
 const Form = () => {
   const [rafterAngleTop, setRafterAngleTop] = useState(0);
@@ -10,48 +11,103 @@ const Form = () => {
   const [cutAngleSide, setCutAngleSide] = useState(0);
 
   const onSubmit = () => {
-    setCutAngleTop(20);
-    setCutAngleSide(30);
+    if (
+      rafterAngleSide <= 0 ||
+      rafterAngleSide <= 0 ||
+      rafterAngleTop <= 0 ||
+      rafterAngleTop <= 0
+    )
+      return;
+
+    const { c: cutOnHorizontal } = triangle({
+      a: rafterWidth,
+      b: undefined,
+      c: undefined,
+      A: undefined,
+      B: rafterAngleTop,
+      C: 90,
+    });
+
+    const { c: topCut } = triangle({
+      a: cutOnHorizontal,
+      b: undefined,
+      c: undefined,
+      A: undefined,
+      B: rafterAngleSide,
+      C: 90,
+    });
+
+    const { b: sideCut } = triangle({
+      a: rafterHeight,
+      b: undefined,
+      c: undefined,
+      A: undefined,
+      B: rafterAngleSide,
+      C: 90,
+    });
+
+    setCutAngleTop(topCut);
+    setCutAngleSide(sideCut);
   };
   return (
     <>
       <form>
-        <label htmlFor="rafterAngleTop">
-          t:
-          <input
-            type="number"
-            id="rafterAngleTop"
-            value={rafterAngleTop}
-            onChange={(e) => setRafterAngleTop(e.target.valueAsNumber)}
-          />
-        </label>
-        <label htmlFor="rafterAngleSide">
-          r:
-          <input
-            type="number"
-            id="rafterAngleSide"
-            value={rafterAngleSide}
-            onChange={(e) => setRafterAngleSide(e.target.valueAsNumber)}
-          />
-        </label>
-        <label htmlFor="rafterWidth">
-          w:
-          <input
-            type="number"
-            id="rafterWidth"
-            value={rafterWidth}
-            onChange={(e) => setRafterWidth(e.target.valueAsNumber)}
-          />
-        </label>
-        <label htmlFor="rafterHeight">
-          h:
-          <input
-            type="number"
-            id="rafterHeight"
-            value={rafterHeight}
-            onChange={(e) => setRafterHeight(e.target.valueAsNumber)}
-          />
-        </label>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <p>t:</p>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="rafterAngleTop"
+                  value={rafterAngleTop}
+                  onChange={(e) => setRafterAngleTop(e.target.valueAsNumber)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>r:</p>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="rafterAngleSide"
+                  value={rafterAngleSide}
+                  onChange={(e) => setRafterAngleSide(e.target.valueAsNumber)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>w:</p>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="rafterWidth"
+                  value={rafterWidth}
+                  onChange={(e) => setRafterWidth(e.target.valueAsNumber)}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>h:</p>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  id="rafterHeight"
+                  value={rafterHeight}
+                  onChange={(e) => setRafterHeight(e.target.valueAsNumber)}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button onClick={onSubmit} type="button">
           Calculate
         </button>
@@ -66,8 +122,32 @@ const Form = () => {
             <div className="label B">B</div>
             <img src="/rafter_scope_close_result.png" alt="spectator view" />
           </div>
-          <p className="p">{`Cut A: ${cutAngleTop}`}</p>
-          <p className="p">{`Cut B: ${cutAngleSide}`}</p>
+
+          <table style={{ width: '100%' }}>
+            <tbody>
+              <tr>
+                <td
+                  style={{
+                    fontSize: '1.2rem',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Cut A:
+                </td>
+                <td>
+                  <p>{+cutAngleTop.toFixed(2)}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
+                  Cut B:
+                </td>
+                <td>
+                  <p>{+cutAngleSide.toFixed(2)}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       )}
     </>

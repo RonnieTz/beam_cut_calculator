@@ -77,14 +77,19 @@ form {
   padding-top: 10px;
 }
 
-form input {
-  margin-bottom: 10px;
-  position: absolute;
-  margin-left: 20px;
+input {
+  padding: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  transition: 0.2s;
+  width: 50%;
 }
 
-form label {
-  margin: 10px 10px;
+input:focus {
+  box-shadow: 0 0 5px 0 green inset;
 }
 
 form button {
@@ -106,7 +111,7 @@ form button {
   background-color: bisque;
 }
 
-.p {
+p {
   margin: 10px;
   font-size: 1.5rem;
   font-weight: 600;

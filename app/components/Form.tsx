@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { triangle } from '../utils/trigonometry';
+import Result from './Result';
 
 const Form = () => {
   const [rafterAngleTop, setRafterAngleTop] = useState(0);
@@ -113,42 +114,7 @@ const Form = () => {
         </button>
       </form>
       {cutAngleTop > 0 && cutAngleSide > 0 && (
-        <div className="result-container">
-          <div className="container">
-            <div className="label A">A</div>
-            <img src="/rafter_scope_top_result.png" alt="spectator view" />
-          </div>
-          <div className="container">
-            <div className="label B">B</div>
-            <img src="/rafter_scope_close_result.png" alt="spectator view" />
-          </div>
-
-          <table style={{ width: '100%' }}>
-            <tbody>
-              <tr>
-                <td
-                  style={{
-                    fontSize: '1.2rem',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Cut A:
-                </td>
-                <td>
-                  <p>{+cutAngleTop.toFixed(2)}</p>
-                </td>
-              </tr>
-              <tr>
-                <td style={{ fontSize: '1.2rem', fontWeight: 'bold' }}>
-                  Cut B:
-                </td>
-                <td>
-                  <p>{+cutAngleSide.toFixed(2)}</p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <Result cutAngleTop={cutAngleTop} cutAngleSide={cutAngleSide} />
       )}
     </>
   );

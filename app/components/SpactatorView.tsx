@@ -1,4 +1,3 @@
-import Image from 'next/image';
 const SpactatorView = () => {
   return (
     <div className="spactator-view-container">

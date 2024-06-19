@@ -3,7 +3,17 @@ import { useState } from 'react';
 import { triangle } from '../utils/trigonometry';
 import Result from './Result';
 
-const Form = () => {
+const Form = ({
+  r_ref,
+  t_ref,
+  w_ref,
+  h_ref,
+}: {
+  r_ref: React.RefObject<HTMLInputElement>;
+  t_ref: React.RefObject<HTMLInputElement>;
+  w_ref: React.RefObject<HTMLInputElement>;
+  h_ref: React.RefObject<HTMLInputElement>;
+}) => {
   const [rafterAngleTop, setRafterAngleTop] = useState(0);
   const [rafterAngleSide, setRafterAngleSide] = useState(0);
   const [rafterWidth, setRafterWidth] = useState(0);
@@ -20,14 +30,16 @@ const Form = () => {
     )
       return;
 
-    const { c: cutOnHorizontal } = triangle({
-      a: rafterWidth,
-      b: undefined,
+    const { a: cutOnHorizontal } = triangle({
+      a: undefined,
+      b: rafterWidth,
       c: undefined,
       A: undefined,
       B: rafterAngleTop,
       C: 90,
     });
+
+    console.log(cutOnHorizontal);
 
     const { c: topCut } = triangle({
       a: cutOnHorizontal,
@@ -61,6 +73,7 @@ const Form = () => {
               </td>
               <td>
                 <input
+                  ref={t_ref}
                   type="number"
                   id="rafterAngleTop"
                   value={rafterAngleTop.toString()}
@@ -76,6 +89,7 @@ const Form = () => {
               </td>
               <td>
                 <input
+                  ref={r_ref}
                   type="number"
                   id="rafterAngleSide"
                   value={rafterAngleSide.toString()}
@@ -89,6 +103,7 @@ const Form = () => {
               </td>
               <td>
                 <input
+                  ref={w_ref}
                   type="number"
                   id="rafterWidth"
                   value={rafterWidth.toString()}
@@ -102,6 +117,7 @@ const Form = () => {
               </td>
               <td>
                 <input
+                  ref={h_ref}
                   type="number"
                   id="rafterHeight"
                   value={rafterHeight.toString()}
